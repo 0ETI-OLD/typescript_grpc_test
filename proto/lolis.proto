@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package lolis.service;
+
+service Lolis {
+  rpc addLoli (AddLoliRequest) returns (AddLoliResponse) {}
+  rpc getLoli (GetLoliRequest) returns (GetLoliResponse) {}
+  rpc getLolis (GetLolisRequest) returns (GetLolisResponse) {}
+  rpc updateLoli (UpdateLoliRequest) returns (UpdateLoliResponse) {}
+  rpc deleteLoli (DeleteLoliRequest) returns (DeleteLoliResponse) {}
+}
+
+message Loli {
+  string _id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  int32 age = 4;
+  bool isLewded = 5;
+}
+
+message AddLoliRequest {
+  string firstName = 1;
+  string lastName = 2;
+  int32 age = 3;
+  bool isLewded = 4;
+}
+
+message AddLoliResponse {
+  Loli loli = 1;
+}
+
+message GetLoliRequest {
+  string _id = 1; 
+}
+
+message GetLoliResponse {
+  Loli loli = 1;
+}
+
+message GetLolisRequest {}
+
+message GetLolisResponse {
+  repeated Loli lolis = 1;
+}
+
+message UpdateLoliRequest {
+  Loli loli = 1;
+}
+
+message UpdateLoliResponse {
+  Loli loli = 1;
+}
+
+message DeleteLoliRequest {
+  string _id = 1;
+}
+
+message DeleteLoliResponse {
+  string message = 1;
+}
